@@ -1,15 +1,18 @@
 package com.example.androidtest.repository
 
+import android.os.Bundle
 import com.google.gson.annotations.SerializedName
 
+const val CREDENTIAL_TYPE: String = "com.example.androidtest"
 
-data class Account(
+data class UserAccount(
     var userId: Int,
     var name: String,
     var bankAccount: String,
     var agency: String,
     var balance: Double
 ) {
+
     constructor(raw: AccountRaw) : this(
         userId = raw.userId!!,
         name = raw.name!!,
@@ -17,6 +20,15 @@ data class Account(
         agency = raw.agency!!,
         balance = raw.balance!!
     )
+
+    fun credentialBundle(): Bundle = Bundle().apply {
+        putString("userId", userId.toString())
+        putString("name", name)
+        putString("bankAccount", bankAccount)
+        putString("agency", agency)
+        putString("balance", balance.toString())
+    }
+
 }
 
 data class AccountRaw(

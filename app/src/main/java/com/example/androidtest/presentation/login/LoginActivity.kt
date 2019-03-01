@@ -1,5 +1,6 @@
 package com.example.androidtest.presentation.login
 
+import android.accounts.AccountManager
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -36,7 +37,6 @@ class LoginActivity : BaseActivity(), LoginActivityContract {
             interactor.requestLogin(edt_user.text.toString(), edt_pass.text.toString())
         }
     }
-
 
     override fun showAlert(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
